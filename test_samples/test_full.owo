@@ -208,7 +208,7 @@ i = ps.get
 displayln("ps.get returns %d should be 5", ps.get())
 
 # Test var keyword
-import test_var.liq
+import test_var.owo
 
 test_var()
 

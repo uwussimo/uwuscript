@@ -40,7 +40,7 @@ After cmake was run the solution file is in the build directory. Start Visual St
 
 # Usage #
 ```
-liq script-file -h -d -v -q -ipath1;path2...;pathn
+owo script-file -h -d -v -q -ipath1;path2...;pathn
 ```
 where
 - h help: shows the usage.
@@ -53,9 +53,9 @@ UwUscript does parse the file, generates the code in memory and runs it.
 
 **Examples**
 ```
-./liq test.liq
-./liq test.liq -q
-./liq test.liq -v -d -i import/path;import/other/path
+./owo test.owo
+./owo test.owo -q
+./owo test.owo -v -d -i import/path;import/other/path
 ```
 
 # Language Syntax #

@@ -131,24 +131,24 @@ BISON_TARGET(Parser parser.y ${CMAKE_CURRENT_BINARY_DIR}/parser.cpp COMPILE_FLAG
 FLEX_TARGET(Scanner tokens.l ${CMAKE_CURRENT_BINARY_DIR}/tokens.cpp )
 ADD_FLEX_BISON_DEPENDENCY(Scanner Parser)
 
-add_executable(liq ${SOURCES_COMMON} ${HEADER_COMMON} ${BISON_Parser_OUTPUTS} ${FLEX_Scanner_OUTPUTS})
+add_executable(owo ${SOURCES_COMMON} ${HEADER_COMMON} ${BISON_Parser_OUTPUTS} ${FLEX_Scanner_OUTPUTS})
 
 # Compiler-dependent and build-depended flags:
 if(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
-    target_compile_options(liq PRIVATE -Wall)
+    target_compile_options(owo PRIVATE -Wall)
 elseif(MSVC)
     replace_flags("/MDd" "/MTd")
     replace_flags("/MD" "/MT")
-    target_compile_options(liq PRIVATE /W4 /permissive-)
-    target_compile_definitions(liq PRIVATE YY_NO_UNISTD_H)
-    target_compile_definitions(liq PRIVATE _SCL_SECURE_NO_WARNINGS)
-    target_compile_definitions(liq PRIVATE _CRT_SECURE_NO_WARNINGS)
-    target_compile_definitions(liq PRIVATE _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS)
+    target_compile_options(owo PRIVATE /W4 /permissive-)
+    target_compile_definitions(owo PRIVATE YY_NO_UNISTD_H)
+    target_compile_definitions(owo PRIVATE _SCL_SECURE_NO_WARNINGS)
+    target_compile_definitions(owo PRIVATE _CRT_SECURE_NO_WARNINGS)
+    target_compile_definitions(owo PRIVATE _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS)
     set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/tokens.cpp PROPERTIES COMPILE_DEFINITIONS __STDC_VERSION__=199901L)
 endif()
 
 # Debug or release ?
-target_compile_definitions(liq PRIVATE $<$<CONFIG:Debug>:_DEBUG>)
+target_compile_definitions(owo PRIVATE $<$<CONFIG:Debug>:_DEBUG>)
 
 
 # Add the compiler definitions of LLVM
@@ -158,29 +158,29 @@ if(MSVC)
     # IntelliSense is broken (command line error).
     string(REPLACE "-D" ";" LLVM_DEFINITIONS ${LLVM_DEFINITIONS} )
 endif()
-target_compile_definitions(liq PRIVATE ${LLVM_DEFINITIONS})
+target_compile_definitions(owo PRIVATE ${LLVM_DEFINITIONS})
 if( "${LLVM_BUILD_TYPE}" MATCHES  "Release|RelWithDebInfo|MinSizeRel")
-  target_compile_definitions(liq PRIVATE LLVM_NO_DUMP)
+  target_compile_definitions(owo PRIVATE LLVM_NO_DUMP)
 endif()
 
 if(NOT LLVM_ENABLE_RTTI)
-    target_compile_definitions(liq PRIVATE LIQ_NO_RTTI)
+    target_compile_definitions(owo PRIVATE LIQ_NO_RTTI)
     if(MSVC)
-        target_compile_options(liq PRIVATE /GR-)
+        target_compile_options(owo PRIVATE /GR-)
     else()
-        target_compile_options(liq PRIVATE -fno-rtti)
+        target_compile_options(owo PRIVATE -fno-rtti)
     endif()
 endif()
 
 if(LLVM_ENABLE_EH AND CMAKE_COMPILER_IS_GNUCXX)
-    target_compile_options(liq PRIVATE -fexceptions)
+    target_compile_options(owo PRIVATE -fexceptions)
 endif()
 
 # Add additional include search directories.
-target_include_directories(liq PRIVATE ${uwuscript_SOURCE_DIR} ${LLVM_INCLUDE_DIRS})
-target_include_directories(liq PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(owo PRIVATE ${uwuscript_SOURCE_DIR} ${LLVM_INCLUDE_DIRS})
+target_include_directories(owo PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
-target_compile_features(liq PRIVATE cxx_std_17)
+target_compile_features(owo PRIVATE cxx_std_17)
 
 # Finally, we link the LLVM libraries to our executable:
-target_link_libraries(liq ${REQ_LLVM_LIBRARIES})
+target_link_libraries(owo ${REQ_LLVM_LIBRARIES})

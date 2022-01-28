@@ -76,9 +76,9 @@ import              BEGIN(incl);
 <incl>[ \t]*        /* eat the whitespace */
 <incl>[^ \t\n\r]+   { /* got the include file name */
                     std::string fileName = yytext;
-                    std::size_t pos = fileName.find(".liq");
+                    std::size_t pos = fileName.find(".owo");
                     if( pos == std::string::npos ) {
-                        fileName += ".liq";
+                        fileName += ".owo";
                     }
                     for( auto libpath : libPaths ) {
                         yyin = fopen( (libpath + fileName).c_str() , "r" );

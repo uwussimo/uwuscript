@@ -23,7 +23,7 @@ int main(int argc, char** argv)
 {
    std::string fileName;
    if( argc == 1 ) {
-      fileName = "./test_full.liq";
+      fileName = "./test_full.owo";
    }
 
    libPaths.push_back("./"); // current path
@@ -111,7 +111,7 @@ int main(int argc, char** argv)
 void usage()
 {
    std::cout << "Usage:\n";
-   std::cout << "liq filename -h -d -v -q -i path1;path2\n";
+   std::cout << "owo filename -h -d -v -q -i path1;path2\n";
    std::cout << "\t-h this help text.\n";
    std::cout << "\t-d debug code generation. Disables the code optimizer pass.\n";
    std::cout << "\t-v be more verbose.\n";
