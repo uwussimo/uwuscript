@@ -164,7 +164,7 @@ if( "${LLVM_BUILD_TYPE}" MATCHES  "Release|RelWithDebInfo|MinSizeRel")
 endif()
 
 if(NOT LLVM_ENABLE_RTTI)
-    target_compile_definitions(owo PRIVATE LIQ_NO_RTTI)
+    target_compile_definitions(owo PRIVATE OWO_NO_RTTI)
     if(MSVC)
         target_compile_options(owo PRIVATE /GR-)
     else()

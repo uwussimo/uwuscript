@@ -41,7 +41,7 @@ void ClassDeclaration::constructStructFields( std::vector<llvm::Type* >& StructT
     for( auto statement : block->statements ) {
         if( statement->getType() == NodeType::variable ) {
             // Type Definitions
-            #if defined(LIQ_NO_RTTI)
+            #if defined(OWO_NO_RTTI)
             VariableDeclaration* vardecl = (VariableDeclaration*) statement;
             #else
             VariableDeclaration* vardecl = dynamic_cast< VariableDeclaration* >(statement);
@@ -58,7 +58,7 @@ void ClassDeclaration::addVarsToClassAttributes( CodeGenContext& context )
         if( statement->getType() == NodeType::variable ) {
             std::string klassName = this->id->getName();
             // Type Definitions
-            #if defined(LIQ_NO_RTTI)
+            #if defined(OWO_NO_RTTI)
             VariableDeclaration* vardecl = (VariableDeclaration*) statement;
             #else
             VariableDeclaration* vardecl = dynamic_cast< VariableDeclaration* >(statement);
