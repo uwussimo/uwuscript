@@ -11,7 +11,7 @@ UwUscript is a scripting language.
 ## Build ##
 1. Clone this repository.
 ```
-git clone https://github.com/xkbeyer/uwuscript.git
+git clone https://github.com/uwussimo/uwuscript.git
 ```
 2. Create a build directory
 ```
