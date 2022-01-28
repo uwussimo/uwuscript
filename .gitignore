@@ -1,0 +1,14 @@
+*~
+*.out
+*.lib
+*.user
+info/*
+*.output
+**/build
+**/Debug
+**/Release
+**/html
+*.llvm
+msg.txt
+TODO.txt
+config.h
